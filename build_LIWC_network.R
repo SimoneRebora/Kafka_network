@@ -1,3 +1,7 @@
+# Kafka Network Analysis
+# built by SR 14/10/2020
+# changed by JBH 15/10/2020
+
 library(lsa)
 
 # upload LIWC table
