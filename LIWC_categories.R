@@ -7,7 +7,7 @@
 
 ## Read LIWC data
 require(tidyverse)
-data_path = "/Users/jberenike/GitHub/Kafka_network/LIWC_analysis_141.csv"
+data_path = "LIWC_analyses/LIWC_analysis_141.csv"
 all = read_csv(data_path) 
 all = all %>%
   mutate(
@@ -20,7 +20,7 @@ all = all %>%
 library(quanteda)
 library(readtext)
 
-alltexts <- readtext('/Users/jberenike/GitHub/Kafka_network/corpus/*.txt', docvarsfrom = "filenames", dvsep = "_", docvarnames = c("Author", "Title", "Year", "Original"))
+alltexts <- readtext('corpus/*.txt', docvarsfrom = "filenames", dvsep = "_", docvarnames = c("Author", "Title", "Year", "Original"))
 all_corpus <- corpus(alltexts)
 all_corpus_summary <- summary(corpus(alltexts), 141) # renders tokens, types, sentences (default is 100 texts)
 tok_all <- quanteda::tokens(alltexts$text,remove_punct = TRUE) # tokenizes all texts; removes punctuation; creates a list object
@@ -81,3 +81,30 @@ epistemic = c('tentat','discrep','differ','certain','cause','insight','adverb','
 # LITERARINESS --------
 #lit_temp = c('focuspast', 'focusfuture', 'focuspresent') # Time orientation
 literariness = c('WPS','Sixltr','assent','AllPunc','MSTTR','readability') # withoutw lit_temp (for now)
+
+
+# the loop
+
+all$exp_relate = 0
+all$exp_body = 0
+all$exp_imperson = 0
+all$exp_affect = 0
+all$exp_space = 0
+all$exp_drives = 0
+all$exp_concerns = 0
+all$exp_transc = 0
+all$experiential = 0
+all$epistemic = 0
+all$literariness = 0
+
+for(category in colnames(all)[105:115]){
+  for(i in 1:length(all$Filename)){
+    all[i,category] <- sum(all[i,which(colnames(all) %in% get(category))])
+  }
+}
+
+final_df <- all[,c(1:99,103:115)]
+write.csv(final_df, file = "LIWC_analyses/LIWC_analysis_141_more_categories.csv", row.names = F)
+
+final_df <- all[,c(1:3, which(colnames(all) %in% c(experiential, epistemic)), 105:114)]
+write.csv(final_df, file = "LIWC_analyses/LIWC_analysis_141_experiential_epistemic.csv", row.names = F)
