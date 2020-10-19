@@ -5,10 +5,12 @@
 library(lsa)
 
 # upload LIWC table
-LIWC_analysis <- read.csv("LIWC_analysis.csv", row.names = 1, stringsAsFactors = F)
+LIWC_analysis <- read.csv("LIWC_analyses/LIWC_analysis_141.csv", row.names = 1, stringsAsFactors = F)
 
-# to do: exclude short texts
-LIWC_analysis$WC[which(LIWC_analysis$WC < 5000)] # let's decide on threshold (5,000 or 2,000?)
+# exclude short texts
+exclude <- which(LIWC_analysis$WC < 2000) # let's decide on threshold (5,000 or 2,000?)
+rownames(LIWC_analysis)[exclude]
+LIWC_analysis <- LIWC_analysis[-exclude,] 
 
 # remove first two columns
 LIWC_analysis <- LIWC_analysis[,-c(1,2)]
@@ -42,24 +44,32 @@ for(i in 1:dim(distance_matrix)[1]){
 edges_df$type <- "undirected" # or "directed"
 
 # write list of edges
-write.csv(edges_df, file = paste("edges_", nearest_neighbours, "neighbours.csv", sep = ""), row.names = F)
+write.csv(edges_df, file = paste("tables/edges_", nearest_neighbours, "neighbours.csv", sep = ""), row.names = F)
 
 # prepare list of nodes
 nodes_list <- unique(c(edges_df$source, edges_df$target))
-groups <- strsplit(nodes_list, "_")
-groups <- unlist(lapply(groups, function(x) x[1]))
+
+# add author group
+author <- strsplit(nodes_list, "_")
+author <- unlist(lapply(author, function(x) x[1]))
 
 # add another group (decades)
-nodes_list <- unique(c(edges_df$source, edges_df$target))
 years <- strsplit(nodes_list, "_")
-years <- unlist(lapply(years, function(x) x[3])) # perhaps 4 instead of 3
+years <- unlist(lapply(years, function(x) x[3]))
 years <- gsub(pattern = ".txt", replacement = "", years)
-# to do: divide into decades
 
-# another one: nationality
-# to be added manually in third (?) position in the titles 
+# function(s) for decade
+floor_decade    = function(value){ return(value - value %% 10) }
+ceiling_decade  = function(value){ return(floor_decade(value)+10) }
+round_to_decade = function(value){ return(round(value / 10) * 10) }
+decade <- floor_decade(as.numeric(years))
 
-nodes_df <- data.frame(ID = nodes_list, label = nodes_list, groups, stringsAsFactors = F)
+# add another group (nationality)
+nationality <- strsplit(nodes_list, "_")
+nationality <- unlist(lapply(nationality, function(x) x[4]))
+nationality <- gsub(".txt", "", nationality)
+
+nodes_df <- data.frame(ID = nodes_list, label = nodes_list, author, decade, nationality, stringsAsFactors = F)
 
 # write list of nodes
-write.csv(nodes_df, file = paste("nodes_", nearest_neighbours, "neighbours.csv", sep = ""), row.names = F)
+write.csv(nodes_df, file = paste("tables/nodes_", nearest_neighbours, "neighbours.csv", sep = ""), row.names = F)
