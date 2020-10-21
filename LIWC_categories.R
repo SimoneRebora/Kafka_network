@@ -80,7 +80,7 @@ epistemic = c('tentat','discrep','differ','certain','cause','insight','adverb','
 
 # LITERARINESS --------
 #lit_temp = c('focuspast', 'focusfuture', 'focuspresent') # Time orientation
-literariness = c('WPS','Sixltr','assent','AllPunc','MSTTR','readability') # withoutw lit_temp (for now)
+literariness = c('WPS','Sixltr','assent','AllPunc','MSTTR','readability') # without lit_temp (for now)
 
 
 # the loop
