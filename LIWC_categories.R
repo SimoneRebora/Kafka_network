@@ -7,7 +7,7 @@
 
 ## Read LIWC data
 require(tidyverse)
-data_path = "LIWC_analyses/LIWC_analysis_140.csv"
+data_path = "LIWC_analyses/LIWC_analysis_148.csv"
 all = read_csv(data_path) 
 all = all %>%
   mutate(
@@ -22,7 +22,7 @@ library(readtext)
 
 alltexts <- readtext('corpus/*.txt', docvarsfrom = "filenames", dvsep = "_", docvarnames = c("Author", "Title", "Year", "Original"))
 all_corpus <- corpus(alltexts)
-all_corpus_summary <- summary(corpus(alltexts), 140) # renders tokens, types, sentences (default is 100 texts)
+all_corpus_summary <- summary(corpus(alltexts), 148) # renders tokens, types, sentences (default is 100 texts)
 tok_all <- quanteda::tokens(alltexts$text,remove_punct = TRUE) # tokenizes all texts; removes punctuation; creates a list object
 
 # MSTTR for all texts
@@ -41,10 +41,10 @@ all_corpus_summary$MSTTR <- MSTTR_all$MSTTR # add MSTTR by author to "all_corpus
 # Readability measure
 tok_all_full <- tokens(alltexts$text,remove_punct = FALSE) #  including punctuation
 readability <- textstat_readability (all_corpus, measure = "SMOG.de", # used formula working for German and tested correlation w/ other formulae (very high)
-                                         remove_hyphens = FALSE,
-                                         min_sentence_length = 1,
-                                         max_sentence_length = 10000,
-                                         intermediate = FALSE
+                                     remove_hyphens = FALSE,
+                                     min_sentence_length = 1,
+                                     max_sentence_length = 10000,
+                                     intermediate = FALSE
 )
 
 all_corpus_summary$SMOG.de <- readability$SMOG.de # add readability
@@ -104,7 +104,7 @@ for(category in colnames(all)[105:115]){
 }
 
 final_df <- all[,c(1:99,103:115)]
-write.csv(final_df, file = "LIWC_analyses/LIWC_analysis_140_more_categories.csv", row.names = F)
+write.csv(final_df, file = "LIWC_analyses/LIWC_analysis_148_more_categories.csv", row.names = F)
 
 final_df <- all[,c(1:3, which(colnames(all) %in% c(experiential, epistemic)), 105:114)]
-write.csv(final_df, file = "LIWC_analyses/LIWC_analysis_140_experiential_epistemic.csv", row.names = F)
+write.csv(final_df, file = "LIWC_analyses/LIWC_analysis_148_experiential_epistemic.csv", row.names = F)

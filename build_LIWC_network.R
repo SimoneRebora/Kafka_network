@@ -5,7 +5,7 @@
 library(lsa)
 
 # upload LIWC table
-LIWC_analysis <- read.csv("LIWC_analyses/LIWC_analysis_140_experiential_epistemic.csv", row.names = 1, stringsAsFactors = F)
+LIWC_analysis <- read.csv("LIWC_analyses/LIWC_analysis_148_experiential_epistemic.csv", row.names = 1, stringsAsFactors = F)
 
 # exclude short texts
 exclude <- which(LIWC_analysis$WC < 2000) # let's decide on threshold (5,000 or 2,000?)
@@ -46,7 +46,7 @@ for(i in 1:dim(distance_matrix)[1]){
 edges_df$type <- "undirected" # or "directed"
 
 # write list of edges
-write.csv(edges_df, file = paste("tables/edges_", nearest_neighbours, "neighbours_EXP_EP.csv", sep = ""), row.names = F)
+write.csv(edges_df, file = paste("tables/edges_", nearest_neighbours, "neighbours_EXP_EP_v1.csv", sep = ""), row.names = F)
 
 # prepare list of nodes
 nodes_list <- unique(c(edges_df$source, edges_df$target))
@@ -74,4 +74,4 @@ nationality <- gsub(".txt", "", nationality)
 nodes_df <- data.frame(ID = nodes_list, label = nodes_list, author, decade, nationality, stringsAsFactors = F)
 
 # write list of nodes
-write.csv(nodes_df, file = paste("tables/nodes_", nearest_neighbours, "neighbours_EXP_EP.csv", sep = ""), row.names = F)
+write.csv(nodes_df, file = paste("tables/nodes_", nearest_neighbours, "neighbours_EXP_EP_v1.csv", sep = ""), row.names = F)
