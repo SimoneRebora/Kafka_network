@@ -5,7 +5,7 @@
 library(lsa)
 
 # upload LIWC table
-LIWC_analysis <- read.csv("LIWC_analyses/LIWC_analysis_141_experiential_epistemic.csv", row.names = 1, stringsAsFactors = F)
+LIWC_analysis <- read.csv("LIWC_analyses/LIWC_analysis_140_experiential_epistemic.csv", row.names = 1, stringsAsFactors = F)
 
 # exclude short texts
 exclude <- which(LIWC_analysis$WC < 2000) # let's decide on threshold (5,000 or 2,000?)
