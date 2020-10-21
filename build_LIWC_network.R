@@ -16,7 +16,9 @@ LIWC_analysis <- LIWC_analysis[-exclude,]
 LIWC_analysis <- LIWC_analysis[,-c(1,2)]
 
 # reduce analysis to just a few selected columns
-# my_selection <- 1:96
+# literariness = c('WPS','Sixltr','MSTTR','SMOG.de')
+# my_selection <- which(colnames(LIWC_analysis) %in% literariness)
+# my_selection <- c(my_selection, 79:96)
 # LIWC_analysis <- LIWC_analysis[,my_selection]
 # try also the other dimensions?
 
@@ -44,7 +46,7 @@ for(i in 1:dim(distance_matrix)[1]){
 edges_df$type <- "undirected" # or "directed"
 
 # write list of edges
-write.csv(edges_df, file = paste("tables/edges_", nearest_neighbours, "neighbours.csv", sep = ""), row.names = F)
+write.csv(edges_df, file = paste("tables/edges_", nearest_neighbours, "neighbours_EXP_EP.csv", sep = ""), row.names = F)
 
 # prepare list of nodes
 nodes_list <- unique(c(edges_df$source, edges_df$target))
@@ -72,4 +74,4 @@ nationality <- gsub(".txt", "", nationality)
 nodes_df <- data.frame(ID = nodes_list, label = nodes_list, author, decade, nationality, stringsAsFactors = F)
 
 # write list of nodes
-write.csv(nodes_df, file = paste("tables/nodes_", nearest_neighbours, "neighbours.csv", sep = ""), row.names = F)
+write.csv(nodes_df, file = paste("tables/nodes_", nearest_neighbours, "neighbours_EXP_EP.csv", sep = ""), row.names = F)
