@@ -1,44 +1,23 @@
-﻿Source;Target;Weight
-kafka_bau_1928_de;brodkafka_samuel_1912_de;64
-kafka_bau_1928_de;brod_stunde_1916_de;6
-kafka_bau_1928_de;goethe_italienische_1786_de;4
-kafka_bau_1928_de;reventlow_dames_1913_de;2
-kafka_bau_1928_de;schnitzler_else_1924_de;2
-kafka_bau_1928_de;walser_geschwister_1907_de;2
-kafka_betrachtung_1912_de;schnitzler_else_1924_de;74
-kafka_betrachtung_1912_de;brodkafka_samuel_1912_de;24
-kafka_betrachtung_1912_de;lasswitz_seife_1890_de;4
-kafka_betrachtung_1912_de;dostoevskij_verbrechen_1882_ru;2
-kafka_betrachtung_1912_de;walser_geschwister_1907_de;2
-kafka_hungerkuenstler_1924_de;brodkafka_samuel_1912_de;36
-kafka_hungerkuenstler_1924_de;brod_stunde_1916_de;34
-kafka_hungerkuenstler_1924_de;musil_mann3_1930_de;24
-kafka_hungerkuenstler_1924_de;musil_mann1_1930_de;6
-kafka_hungerkuenstler_1924_de;goethe_wahlverwandtschaften_1809_de;4
-kafka_kuebelreiter_1917_de;achleitner_tann_1897_de;98
-kafka_kuebelreiter_1917_de;eschstruth_katz_1886_de;76
-kafka_kuebelreiter_1917_de;kleist_bettelweib_1810_de;26
-kafka_kuebelreiter_1917_de;schnitzler_else_1924_de;20
-kafka_kuebelreiter_1917_de;achleitner_bergrichters_1900_de;10
-kafka_kuebelreiter_1917_de;dery_liebe_1896_de;4
-kafka_kuebelreiter_1917_de;lasswitz_seife_1890_de;2
-kafka_landarzt_1920_de;brodkafka_samuel_1912_de;94
-kafka_landarzt_1920_de;hagenauer_muspilli_1900_de;2
-kafka_prozess_1925_de;brodkafka_samuel_1912_de;16
-kafka_prozess_1925_de;dostoevskij_idiot_1889_ru;8
-kafka_prozess_1925_de;hamsun_weiber_1922_sca;2
-kafka_prozess_1925_de;schreiner_halket_1898_de;2
-kafka_schloss_1925_de;dostoevskij_verbrechen_1882_ru;28
-kafka_schloss_1925_de;dostoevskij_idiot_1889_ru;18
-kafka_schloss_1925_de;reventlow_dames_1913_de;8
-kafka_schloss_1925_de;hamsun_weiber_1922_sca;2
-kafka_strafkolonie_1919_de;lasswitz_planeten01_1897_de;12
-kafka_urteil_1913_de;hesse_knulp_1915_de;6
-kafka_urteil_1913_de;sapper_vater_1915_de;4
-kafka_urteil_1913_de;raabe_akten_1896_de;2
-kafka_verwandlung_1915_de;brod_beer_1912_de;28
-kafka_verwandlung_1915_de;schnitzler_casanova_1918_de;4
-kafka_verwandlung_1915_de;falke_durchschnitt_1892_de;2
-kafka_verwandlung_1915_de;tolstoy_herrknecht_1916_ru;2
-brodkafka_samuel_1912_de;goethe_italienische_1786_de;28
-brodkafka_samuel_1912_de;altenberg_prodromos_1906_de;12
+author	node no. of occurrence	edge acc. weight	time warp?
+brodkafka	5	23.4	
+achleitner	2	10.8	
+schnitzler	4	10	bau: no time warp
+eschstruth	1	7.6	
+brod	3	6.8	
+dostojevski	4	5.6	
+goethe	3	3.6	
+musil	2	3	time warp
+kleist	1	2.6	
+lasswitz	3	1.8	
+altenberg	2	1.2	
+reventlow	2	1	
+hesse	1	0.6	time warp
+hamsun	2	0.4	
+sapper	1	0.4	time warp
+walser	2	0.4	
+falke	1	0.2	
+hagenauer	1	0.2	
+schreiner	1	0.2	
+tolstoy	1	0.2	time warp?
+dery	1	0.1	
+raabe	1	0.1	
