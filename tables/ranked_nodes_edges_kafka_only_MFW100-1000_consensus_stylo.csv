@@ -1,0 +1,24 @@
+﻿author;node no. of occurrence;edge acc. weight;time warp?;edge weight from gephi divided by 100 for scale
+kafka;68;44.54;;
+brodkafka;5;23.4;;
+achleitner;2;10.8;;
+schnitzler;4;10;bau: no time warp;
+eschstruth;1;7.6;;
+brod;3;6.8;;
+dostojevski;4;5.6;;
+goethe;3;3.6;;
+musil;2;3;time warp;
+kleist;1;2.6;;
+lasswitz;3;1.8;;
+altenberg;2;1.2;;
+reventlow;2;1;;
+hesse;1;0.6;time warp;
+hamsun;2;0.4;;
+sapper;1;0.4;time warp;
+walser;2;0.4;;
+falke;1;0.2;;
+hagenauer;1;0.2;;
+schreiner;1;0.2;;
+tolstoy;1;0.2;time warp?;
+dery;1;0.1;;
+raabe;1;0.1;;
